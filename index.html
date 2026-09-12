@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BizDash Admin</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="login-screen" class="screen glass-card">
+        <h1>BizDash Admin</h1>
+        <button id="google-login-btn">Sign in with Google</button>
+    </div>
+
+    <div id="dashboard-screen" class="screen-wide hidden">
+        <div class="dashboard-header">
+            <h1>BizDash Admin</h1>
+            <button id="signout-btn">Sign Out</button>
+        </div>
+
+        <div id="stats-bar" class="stats-bar"></div>
+
+        <div class="filter-row">
+  <input type="text" id="search-input" placeholder="Search by business name or owner email...">
+
+  <select id="filter-select">
+    <option value="all">All Businesses</option>
+    <option value="premium">Premium Only</option>
+    <option value="free">Free Only</option>
+    <option value="expired">Expired Only</option>
+  </select>
+</div>
+
+        <div id="business-list"></div>
+    </div>
+    <div id="toast-container"></div>
+
+    <div id="payment-modal" class="modal-overlay hidden">
+        <div class="glass-card modal-box">
+            <h3>Record Payment</h3>
+            <p id="modal-business-name"></p>
+
+            <label>Amount Paid</label>
+            <input type="number" id="payment-amount" placeholder="e.g. 5000">
+
+            <label>Plan</label>
+            <select id="payment-plan">
+                <option value="monthly">Monthly</option>
+                <option value="3-month">3 Months</option>
+                <option value="6-month">6 Months</option>
+                <option value="annual">Annual</option>
+            </select>
+
+            <div class="button-row">
+                <button id="confirm-payment-btn">Confirm Payment</button>
+                <button id="cancel-payment-btn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

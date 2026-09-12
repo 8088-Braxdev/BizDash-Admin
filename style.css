@@ -1,0 +1,355 @@
+/* Base setup */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #0d1f1a; /* dark emerald-black background */
+  color: #f4f1ea; /* sand text */
+  min-height: 100vh;
+  padding: 24px;
+}
+
+/* Hide whichever screen isn't active */
+.hidden {
+  display: none;
+}
+
+/* Narrow centered card - used for login only */
+.screen {
+  width: 100%;
+  max-width: 480px;
+  margin: 80px auto;
+}
+
+/* Wide layout - used for the dashboard */
+.screen-wide {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Glass card look, matching BizDash */
+.glass-card {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 24px;
+}
+
+#login-screen h1 {
+  text-align: center;
+  margin-bottom: 24px;
+  color: #2ecc9c; /* emerald accent */
+}
+
+#google-login-btn {
+  width: 100%;
+  padding: 14px;
+  background: #2ecc9c;
+  color: #0d1f1a;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#google-login-btn:hover {
+  opacity: 0.9;
+}
+
+/* Dashboard header row */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.dashboard-header h1 {
+  color: #2ecc9c;
+}
+
+#signout-btn {
+  padding: 10px 18px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #f4f1ea;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#signout-btn:hover {
+  border-color: #2ecc9c;
+}
+
+/* Each business row */
+.business-card {
+  margin-bottom: 16px;
+}
+
+.business-card h3 {
+  color: #2ecc9c;
+  margin-bottom: 8px;
+}
+
+.business-card p {
+  margin-bottom: 4px;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.button-row button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.extend-btn {
+  background: #2ecc9c;
+  color: #0d1f1a;
+}
+
+.toggle-btn {
+  background: #e8c88b; /* sand accent */
+  color: #0d1f1a;
+}
+
+.delete-btn {
+  background: #e05c5c;
+  color: white;
+}
+
+.button-row button:hover {
+  opacity: 0.85;
+}
+/* Stats bar - 3 boxes side by side */
+.stats-bar {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.stat-box {
+  flex: 1;
+  text-align: center;
+  padding: 16px;
+}
+
+.stat-box span {
+  display: block;
+  font-size: 28px;
+  font-weight: 700;
+  color: #2ecc9c;
+}
+
+.stat-box p {
+  font-size: 13px;
+  opacity: 0.8;
+  margin-top: 4px;
+}
+
+/* Search input */
+#search-input {
+  width: 100%;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  color: #f4f1ea;
+  font-size: 14px;
+}
+
+#search-input::placeholder {
+  color: rgba(244, 241, 234, 0.5);
+}
+
+#search-input:focus {
+  outline: none;
+  border-color: #2ecc9c;
+}
+/* Toast notifications */
+#toast-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 1000;
+}
+
+.toast {
+  background: #2ecc9c;
+  color: #0d1f1a;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Payment modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+.modal-overlay.hidden {
+  display: none;
+}
+/* Fix ugly white number input + style it to match dark theme */
+#payment-amount {
+  width: 100%;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  color: #f4f1ea;
+  font-size: 16px;
+  font-weight: 600;
+  -moz-appearance: textfield;
+}
+
+/* Removes the ugly up/down spinner arrows on number inputs (Chrome/Safari) */
+#payment-amount::-webkit-outer-spin-button,
+#payment-amount::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#payment-amount:focus {
+  outline: none;
+  border-color: #2ecc9c;
+}
+.modal-box {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 20px;
+}
+#payment-plan {
+  width: 100%;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  color: #f4f1ea;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+#payment-plan option {
+  background: #0d1f1a;
+  color: #f4f1ea;
+}
+.modal-box h3 {
+  color: #2ecc9c;
+  margin-bottom: 16px;
+}
+
+.modal-box label {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 6px;
+  margin-top: 12px;
+  opacity: 0.8;
+}
+
+.modal-box input,
+.modal-box select {
+  width: 100%;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: #f4f1ea;
+  font-size: 14px;
+}
+
+.modal-box input:focus,
+.modal-box select:focus {
+  outline: none;
+  border-color: #2ecc9c;
+}
+
+#confirm-payment-btn {
+  background: #2ecc9c;
+  color: #0d1f1a;
+}
+
+#cancel-payment-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #f4f1ea;
+}
+
+.pay-btn {
+  background: #4a9eff;
+  color: white;
+}
+/* Search bar + filter dropdown side by side */
+.filter-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.filter-row #search-input {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+#filter-select {
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  color: #f4f1ea;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+#filter-select option {
+  background: #0d1f1a;
+  color: #f4f1ea;
+}
+
+#filter-select:focus {
+  outline: none;
+  border-color: #2ecc9c;
+}
