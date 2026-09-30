@@ -279,19 +279,13 @@ confirmPaymentBtn.addEventListener("click", async function () {
 
 // 12. Emergency override: take premium away (refund, scammer, etc.)
 async function setFree(businessId) {
-  const sure = confirm("Set this business back to Free?");
+  const sure = confirm("Set this business back to Free? This also clears their expiry date.");
   if (!sure) return;
 
-  const updateResult = await client
-    .from("businesses")
-    .update({
-      is_premium: false
-      // , analytics_enabled: false   // <- uncomment if you want analytics locked again too
-    })
-    .eq("id", businessId);
+  const result = await client.rpc("set_free", { p_business_id: businessId });
 
-  if (updateResult.error) {
-    alert("Error: " + updateResult.error.message);
+  if (result.error) {
+    alert("Error: " + result.error.message);
   } else {
     showToast("Set to Free");
     loadBusinesses(false);
