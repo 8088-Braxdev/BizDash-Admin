@@ -66,8 +66,9 @@ function showToast(message) {
 
 // premium = paid and not expired | expired = was premium, date passed | free = never paid
 function getBusinessStatus(biz) {
-  if (!biz.is_premium || !biz.premium_expires_at) return "free";
-  return new Date(biz.premium_expires_at) > new Date() ? "premium" : "expired";
+  if (!biz.premium_expires_at) return "free";
+  if (new Date(biz.premium_expires_at) <= new Date()) return "expired";
+  return biz.is_premium ? "premium" : "free";
 }
 
 // 4. Login / logout
