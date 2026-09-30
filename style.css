@@ -353,3 +353,36 @@ body {
   outline: none;
   border-color: #2ecc9c;
 }
+.stats-bar {
+  flex-wrap: wrap;
+}
+
+.stat-box {
+  min-width: 140px;
+}
+
+.filter-row {
+  flex-wrap: wrap;
+}
+
+.filter-row #search-input {
+  min-width: 200px;
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 14px;
+  }
+
+  .dashboard-header h1 {
+    font-size: 22px;
+  }
+
+  .stat-box {
+    min-width: calc(50% - 8px);
+  }
+
+  #filter-select {
+    width: 100%;
+  }
+}
